@@ -9,3 +9,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 }
+private val wordViewModel: WordViewModel by viewModels {
+    WordViewModelFactory((application as WordsApplication).repository)
+}
