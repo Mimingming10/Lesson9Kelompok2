@@ -21,9 +21,24 @@ private val newWordActivityRequestCode = 1
         WordViewModelFactory((application as WordsApplication).repository)
     }
 
-wordViewModel.allWords.observe(this, Observer { words ->
+wordViewModel.allWords.observe(this, Observer {
+    words ->
     // Update the cached copy of the words in the adapter.
     words?.let { adapter.submitList(it) }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            data?.getStringExtra(NewWordActivity.EXTRA_REPLY)?.let {
+                val word = Word(it)
+                wordViewModel.insert(word)
+            }
+        } else {
+            Toast.makeText(
+                applicationContext,
+                R.string.empty_not_saved,
+                Toast.LENGTH_LONG
+            ).show()
+        }}
 
 
