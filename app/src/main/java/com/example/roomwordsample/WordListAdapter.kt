@@ -19,6 +19,7 @@ package com.example.roomwordsample
 
             fun bind(text: String?) {
                 wordItemView.text = text
+                a=b
             }
 
             companion object {
