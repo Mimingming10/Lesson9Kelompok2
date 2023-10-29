@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat.startActivityForResult
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }}
 private val newWordActivityRequestCode = 1
-private val wordViewModel: WordViewModel by viewModels {
+private val wordViewModel: WordViewModel by viewModel {
     WordViewModelFactory((application as WordsApplication).repository)
 }
 
@@ -35,7 +36,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     }
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
-    fab.setOnClickListener {
+            fab.setOnClickListener {
         val intent = Intent(this@MainActivity, NewWordActivity::class.java)
         startActivityForResult(intent, newWordActivityRequestCode)
     }

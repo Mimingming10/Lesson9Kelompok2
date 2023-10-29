@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<<<<<<< HEAD
     <dimen name="min_height">48dp</dimen>
-=======
-    <dimen name="big_padding">16dp</dimen>
->>>>>>> origin/master
 </resources>
