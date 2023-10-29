@@ -11,6 +11,7 @@ package com.example.roomwordsample
         override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
             val current = getItem(position)
             holder.bind(current.word)
+
         }
 
         class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
